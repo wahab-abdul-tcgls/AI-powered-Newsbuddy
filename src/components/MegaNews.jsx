@@ -1,15 +1,12 @@
-import { FunctionComponent, useState } from "react";
+import { useState } from "react";
 import { Button, Menu, MenuItem } from "@mui/material";
+import PropTypes from "prop-types";
 import styles from "./MegaNews.module.css";
 
-export type MegaNewsType = {
-  className?: string;
-};
-
-const MegaNews: FunctionComponent<MegaNewsType> = ({ className = "" }) => {
-  const [menuAnchorEl, setMenuAnchorEl] = useState<HTMLElement | null>(null);
+const MegaNews = ({ className = "" }) => {
+  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const menuOpen = Boolean(menuAnchorEl);
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMenuClick = (event) => {
     setMenuAnchorEl(event.currentTarget);
   };
   const handleMenuClose = () => {
@@ -222,6 +219,10 @@ const MegaNews: FunctionComponent<MegaNewsType> = ({ className = "" }) => {
       </div>
     </header>
   );
+};
+
+MegaNews.propTypes = {
+  className: PropTypes.string,
 };
 
 export default MegaNews;

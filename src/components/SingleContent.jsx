@@ -1,23 +1,8 @@
-import { FunctionComponent, useMemo, type CSSProperties } from "react";
+import { useMemo } from "react";
+import PropTypes from "prop-types";
 import styles from "./SingleContent.module.css";
 
-export type SingleContentType = {
-  className?: string;
-  imgcar05?: string;
-  title?: string;
-  explanation?: string;
-
-  /** Style props */
-  imgcar05IconFlex?: CSSProperties["flex"];
-  titleFlex?: CSSProperties["flex"];
-  titleHeight?: CSSProperties["height"];
-  titleDisplay?: CSSProperties["display"];
-  titleMinWidth?: CSSProperties["minWidth"];
-  titlePadding?: CSSProperties["padding"];
-  titleAlignSelf?: CSSProperties["alignSelf"];
-};
-
-const SingleContent: FunctionComponent<SingleContentType> = ({
+const SingleContent = ({
   className = "",
   imgcar05,
   title,
@@ -30,19 +15,19 @@ const SingleContent: FunctionComponent<SingleContentType> = ({
   titlePadding,
   titleAlignSelf,
 }) => {
-  const imgcar05IconStyle: CSSProperties = useMemo(() => {
+  const imgcar05IconStyle = useMemo(() => {
     return {
       flex: imgcar05IconFlex,
     };
   }, [imgcar05IconFlex]);
 
-  const titleStyle: CSSProperties = useMemo(() => {
+  const titleStyle = useMemo(() => {
     return {
       flex: titleFlex,
     };
   }, [titleFlex]);
 
-  const title1Style: CSSProperties = useMemo(() => {
+  const title1Style = useMemo(() => {
     return {
       height: titleHeight,
       display: titleDisplay,
@@ -74,6 +59,22 @@ const SingleContent: FunctionComponent<SingleContentType> = ({
       </div>
     </div>
   );
+};
+
+SingleContent.propTypes = {
+  className: PropTypes.string,
+  imgcar05: PropTypes.string,
+  title: PropTypes.string,
+  explanation: PropTypes.string,
+
+  /** Style props */
+  imgcar05IconFlex: PropTypes.any,
+  titleFlex: PropTypes.any,
+  titleHeight: PropTypes.any,
+  titleDisplay: PropTypes.any,
+  titleMinWidth: PropTypes.any,
+  titlePadding: PropTypes.any,
+  titleAlignSelf: PropTypes.any,
 };
 
 export default SingleContent;

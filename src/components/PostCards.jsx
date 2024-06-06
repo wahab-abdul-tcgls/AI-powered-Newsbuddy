@@ -1,21 +1,8 @@
-import { FunctionComponent, useMemo, type CSSProperties } from "react";
+import { useMemo } from "react";
+import PropTypes from "prop-types";
 import styles from "./PostCards.module.css";
 
-export type PostCardsType = {
-  className?: string;
-  imgsport05?: string;
-  title?: string;
-  explanation?: string;
-  imgavatar12?: string;
-  header?: string;
-  subhead?: string;
-
-  /** Style props */
-  propLineHeight?: CSSProperties["lineHeight"];
-  imgsport05IconFlex?: CSSProperties["flex"];
-};
-
-const PostCards: FunctionComponent<PostCardsType> = ({
+const PostCards = ({
   className = "",
   imgsport05,
   title,
@@ -26,13 +13,13 @@ const PostCards: FunctionComponent<PostCardsType> = ({
   propLineHeight,
   imgsport05IconFlex,
 }) => {
-  const title2Style: CSSProperties = useMemo(() => {
+  const title2Style = useMemo(() => {
     return {
       lineHeight: propLineHeight,
     };
   }, [propLineHeight]);
 
-  const imgsport05IconStyle: CSSProperties = useMemo(() => {
+  const imgsport05IconStyle = useMemo(() => {
     return {
       flex: imgsport05IconFlex,
     };
@@ -76,6 +63,20 @@ const PostCards: FunctionComponent<PostCardsType> = ({
       </div>
     </div>
   );
+};
+
+PostCards.propTypes = {
+  className: PropTypes.string,
+  imgsport05: PropTypes.string,
+  title: PropTypes.string,
+  explanation: PropTypes.string,
+  imgavatar12: PropTypes.string,
+  header: PropTypes.string,
+  subhead: PropTypes.string,
+
+  /** Style props */
+  propLineHeight: PropTypes.any,
+  imgsport05IconFlex: PropTypes.any,
 };
 
 export default PostCards;

@@ -1,12 +1,8 @@
-import { FunctionComponent } from "react";
 import SingleContent from "./SingleContent";
+import PropTypes from "prop-types";
 import styles from "./Content.module.css";
 
-export type ContentType = {
-  className?: string;
-};
-
-const Content: FunctionComponent<ContentType> = ({ className = "" }) => {
+const Content = ({ className = "" }) => {
   return (
     <section className={[styles.content, className].join(" ")}>
       <SingleContent
@@ -84,6 +80,10 @@ const Content: FunctionComponent<ContentType> = ({ className = "" }) => {
       </div>
     </section>
   );
+};
+
+Content.propTypes = {
+  className: PropTypes.string,
 };
 
 export default Content;

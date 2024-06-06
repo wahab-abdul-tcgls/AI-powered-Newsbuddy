@@ -1,14 +1,8 @@
-import { FunctionComponent } from "react";
 import PostCards from "./PostCards";
+import PropTypes from "prop-types";
 import styles from "./FrameComponent.module.css";
 
-export type FrameComponentType = {
-  className?: string;
-};
-
-const FrameComponent: FunctionComponent<FrameComponentType> = ({
-  className = "",
-}) => {
+const FrameComponent = ({ className = "" }) => {
   return (
     <section className={[styles.headerSectionParent, className].join(" ")}>
       <div className={styles.headerSection}>
@@ -79,6 +73,10 @@ const FrameComponent: FunctionComponent<FrameComponentType> = ({
       </footer>
     </section>
   );
+};
+
+FrameComponent.propTypes = {
+  className: PropTypes.string,
 };
 
 export default FrameComponent;
